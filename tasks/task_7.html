@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 7</title>
+  </head>
+
+  <body>
+    <h1>Задача 7</h1>
+    <p>
+      Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей
+      за
+    </p>
+    <ol>
+      <li>за весь рік;</li>
+      <li>у першій половині року;</li>
+      <li>у другій половині року;</li>
+      <li>за літо;</li>
+      <li>за ІІ квартал;</li>
+      <li>за парні місяці (з парними номерами);</li>
+      <li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+    </ol>
+
+    <script>
+      //1. function
+      function getRandomNumber(minNum, maxNum) {
+        return minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+      }
+      function getRandomArr(ValNum, minNum, maxNum) {
+        const arr = []
+        for (let i = 0; i < ValNum; i++) {
+          const randNumber =
+            minNum + Math.floor(Math.random() * (maxNum - minNum + 1))
+          arr.push(randNumber)
+        }
+        return arr
+      }
+      function getSumInRange(
+        paymentsList,
+        minIndexMouth,
+        maxIndexMouth,
+        step = 1
+      ) {
+        let sum = 0
+        for (let i = minIndexMouth - 1; i < maxIndexMouth; i += step) {
+          sum += paymentsList[i]
+        }
+        return sum
+      }
+      const paymentsList = getRandomArr(12, 1, 1000)
+      // за весь рік;
+      let sumYears = getSumInRange(paymentsList, 1, 12)
+      document.write(`за весь рік - ${sumYears}<br>`)
+      // у першій половині року;
+      let sumFirstHalfYears = getSumInRange(paymentsList, 1, 6)
+      document.write(`у першій половині року - ${sumFirstHalfYears}<br>`)
+      // у другій половині року;
+      let sumSecondHalfYears = getSumInRange(paymentsList, 7, 12)
+      document.write(`у другій половині року - ${sumSecondHalfYears}<br>`)
+      // за літо;
+      let sumSummer = getSumInRange(paymentsList, 6, 8)
+      document.write(`за літо - ${sumSummer}<br>`)
+      // за ІІ квартал;
+      let sumforQuarter = getSumInRange(paymentsList, 4, 6)
+      document.write(`за ІІ квартал - ${sumforQuarter}<br>`)
+      // за парні місяці (з парними номерами);
+      let sumEvenMon = getSumInRange(paymentsList, 2, 12, 2)
+      document.write(`за парні місяці  - ${sumEvenMon}<br>`)
+      // за місяці, які є початковими у сезоні (весна, літо, осінь, зима).;
+      let sumStartSeason = getSumInRange(paymentsList, 3, 12, 3)
+      document.write(
+        `за місяці, які є початковими у сезоні  - ${sumStartSeason}<br>`
+      )
+    </script>
+  </body>
+</html>

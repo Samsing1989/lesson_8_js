@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 5</title>
+  </head>
+
+  <body>
+    <h1>Задача 5</h1>
+    <p>Дано послідовність оцінок учня. Підрахувати кількість:</p>
+    <ol>
+      <li>двійок</li>
+      <li>кількість хороших оцінок (добре, відмінно);</li>
+      <li>кількість оцінок, які нижче середнього.</li>
+    </ol>
+
+    <script>
+      let getStudentGrades = [3, 5, 4, 2, 3, 5, 4, 5, 2, 4]
+      //двійок
+      function getGradesTwo(getStudentGrades) {
+        let grades = 0
+        for (let i = 0; i < getStudentGrades.length; i++) {
+          if (getStudentGrades[i] < 3) grades++
+        }
+        return grades
+      }
+      const studentGrades = getGradesTwo(getStudentGrades)
+      document.write(`двійок - ${studentGrades}<br>`)
+      //кількість хороших оцінок (добре, відмінно);
+      function getGradesGoodExcellent(getStudentGrades) {
+        let grades = 0
+        for (let i = 0; i < getStudentGrades.length; i++) {
+          if (getStudentGrades[i] > 3) grades++
+        }
+        return grades
+      }
+      const gradesGoodExcellent = getGradesGoodExcellent(getStudentGrades)
+      document.write(
+        `кількість хороших оцінок (добре, відмінно) - ${gradesGoodExcellent}<br>`
+      )
+      //кількість оцінок, які нижче середнього.
+      function getGardesBelowAverage(getStudentGrades) {
+        let grades = 0
+        for (let i = 0; i < getStudentGrades.length; i++) {
+          if (getStudentGrades[i] === 3) grades++
+        }
+        return grades
+      }
+      const gardesBelowAverage = getGardesBelowAverage(getStudentGrades)
+      document.write(
+        `кількість оцінок, які нижче середнього - ${gardesBelowAverage}`
+      )
+    </script>
+  </body>
+</html>

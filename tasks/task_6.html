@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 6</title>
+  </head>
+
+  <body>
+    <h1>Задача 6</h1>
+    <p>
+      <p>Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).</p>
+		  <p>Приклад збереження даних</p>
+		  <p>let productsPrices = [1000, 20, 31]</p>
+		  <p>let productsTitles = [‘cheese’, ‘juice’, ‘bread’]</p>
+    </p>
+    <script>
+      //масиви
+     let productsPrices = [100, 20, 31]
+		let productsTitles = ['cheese', 'juice', 'bread']
+		let moneyIsSet = parseInt(prompt('Введіть кількість грошей '))
+//1. function
+function getPricesOfGoodsAndNames(productsPrices,productsTitles,moneyIsSet) {
+	let product = []
+	for (let i = 0; i < productsPrices.length; i++) {
+		if(moneyIsSet>=productsPrices[i])
+		product.push(productsTitles[i])
+	}
+	return product
+}
+//Виводимо результат
+const pricesOfGoodsAndNames = getPricesOfGoodsAndNames(productsPrices,productsTitles,moneyIsSet)
+document.write(`двійок - ${pricesOfGoodsAndNames}<br>`)
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 9</title>
+  </head>
+
+  <body>
+    <h1>Задача 9</h1>
+    <p>
+      Морський бій. Користувач вводить кількість клітинок одновимірного масиву
+      та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні
+      кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста,
+      якщо 1 – то це означає, що там є корабель. Користувач вводить номер
+      клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть
+      потоплені усі кораблі)
+    </p>
+    <script>
+      // Поле гри
+      function getRandom(minVal, maxVal) {
+        return minVal + Math.floor(Math.random() * (maxVal - minVal + 1))
+      }
+
+      function getPlayingField(gameField) {
+        let shipIndex
+        const lastIndex = gameField.length - 1
+        do {
+          shipIndex = getRandom(0, lastIndex)
+        } while (gameField[shipIndex] === 1)
+        return shipIndex
+      }
+      function createField(cellsNum, shipsNum) {
+        const gameField = new Array(cellsNum).fill("O")
+        for (let i = 0; i < shipsNum; i++) {
+          let shipIndex = getPlayingField(gameField)
+          gameField[shipIndex] = "X"
+        }
+        return gameField
+      }
+      // гра для користувача
+      function games(gameField, shipsNum) {
+        do {
+          const userPosition = parseInt(
+            prompt(`Ваш вистріл (1 - ${gameField.length})`)
+          )
+          if (gameField[userPosition] === "X") {
+            shipsNum--
+            alert("Ви влучели!")
+            gameField[userPosition] = "O"
+          } else alert("Ви промахнулись")
+        } while (shipsNum > 0)
+      }
+      const gameField = createField(6, 3)
+      games(gameField, 3)
+    </script>
+  </body>
+</html>

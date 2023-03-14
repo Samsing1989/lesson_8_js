@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 4</title>
+  </head>
+
+  <body>
+    <h1>Задача 4</h1>
+    <p>
+      Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які
+      :
+    </p>
+    <ol>
+      <li>починаються на букву «А»;</li>
+      <li>перша і остання літери співпадають;</li>
+      <li>складаються з більше ніш 5 символів;</li>
+    </ol>
+    <script>
+      //Масив номерів
+      const numCar = [
+        "PO5687KP",
+        "5455",
+        "KI7656ER",
+        "AA5634TH",
+        "ET4523KP",
+        "AI8674OP",
+        "ER8967MO",
+        "AQ1277OP",
+        "BH9857OP",
+        "6t566",
+        "6ty546",
+      ]
+
+      // починаються на букву «А»;
+      let firstLetter = 0
+      numCar.forEach((Element) => {
+        if (Element[0] === "A") firstLetter++
+      })
+      //Виводимо результат
+      document.write(`очинаються на букву «А» - ${firstLetter}<br>`)
+      // перша і остання літери співпадають;
+      function getFirstAndLastLetter(numCar) {
+        let count = 0
+        for (let i = 0; i < numCar.length; i++) {
+          let carNumber = numCar[i]
+          let firstLatter = carNumber[0]
+          let lastLatter = carNumber[carNumber.length - 1]
+          if (firstLatter === lastLatter) count++
+        }
+        return count
+      }
+      const firstAndLastLetter = getFirstAndLastLetter(numCar)
+      //Виводимо результат
+      document.write(
+        `перша і остання літери співпадають - ${firstAndLastLetter}<br>`
+      )
+      // складаються з більше ніш 5 символів;
+      function getCarNumMore5(numCar) {
+        let count = 0
+        for (let i = 0; i < numCar.length; i++) {
+          if (numCar[i].length > 5) count++
+        }
+        return count
+      }
+      const carNumMore5 = getCarNumMore5(numCar)
+      //Виводимо результат
+      document.write(`номери починаються на букву «А» - ${carNumMore5}<br>`)
+    </script>
+  </body>
+</html>

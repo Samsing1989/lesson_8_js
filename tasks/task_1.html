@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Задача 1</title>
+  </head>
+
+  <body>
+    <h1>Задача 1</h1>
+    <p>
+      Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+      з’ясувати до якої категорії він відноситься (відмінник, двійочник (має
+      хоча би одну двійку), хорошист (оцінки добре і відмінно), трійочник(є хоча
+      би одна трійка)).
+    </p>
+
+    <script>
+      let subjects = parseInt(prompt(`Введеіть кількість придмета`))
+      // function
+      function arrayScore(rating) {
+        let arr = []
+        for (let i = 0; i < rating; i++) {
+          let assessmentOfSubject = parseInt(
+            prompt(`Введеіть оцінку придмета ${i + 1} `)
+          )
+          arr.push(assessmentOfSubject)
+        }
+        return arr
+      }
+
+      function getAverageScoreNumber(scoreNumber) {
+        let scoreNumberSum = 0
+        for (let i = 0; i < scoreNumber.length; i++) {
+          scoreNumberSum += scoreNumber[i]
+        }
+        return scoreNumberSum / scoreNumber.length
+      }
+
+      function getStudentsAverageGrades(score) {
+        let minScore = score[0]
+        for (let i = 0; i <= score.length; i++) {
+          if (score[i] < minScore) minScore = score[i]
+        }
+        let result
+        switch (minScore) {
+          case 1:
+          case 2:
+          case 3:
+            result = "двійочник"
+            break
+          case 4:
+          case 5:
+          case 6:
+            result = "трійочник"
+            break
+          case 7:
+          case 8:
+          case 9:
+            result = "хорошист"
+            break
+          default:
+            result = "відмінник"
+            break
+        }
+        return result
+      }
+      let score = arrayScore(subjects)
+      const AVERAGE_SCORE_NUMBER = getAverageScoreNumber(score)
+      const AVERAGE_GRADES = getStudentsAverageGrades(score)
+      // Виводимо результат
+      document.write(
+        `середня оцінка - ${AVERAGE_SCORE_NUMBER.toFixed(
+          0
+        )} <br> Оцінка студента - ${AVERAGE_GRADES}`
+      )
+    </script>
+  </body>
+</html>
